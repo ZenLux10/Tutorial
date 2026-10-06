@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guida Completa al CSS (Cascading Style Sheets)</title>
+    <style>
+        :root {
+            --bg-color: #121214;
+            --card-bg: #1e1e24;
+            --code-bg: #282a36;
+            --accent: #38bdf8;
+            --accent-hover: #0284c7;
+            --purple: #bd93f9;
+            --green: #50fa7b;
+            --yellow: #f1fa8c;
+            --pink: #ff79c6;
+            --text: #e1e1e6;
+            --text-muted: #a9a9b3;
+            --border: #323238;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        /* Header e Navigazione */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 30px 0 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        header h1 {
+            color: #fff;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        header h1 span {
+            color: var(--accent);
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .quick-nav {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quick-nav span {
+            font-weight: bold;
+            color: var(--accent);
+            margin-right: 5px;
+        }
+
+        .quick-nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.04);
+            transition: all 0.2s ease;
+        }
+
+        .quick-nav a:hover {
+            color: #fff;
+            background: var(--accent);
+        }
+
+        section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            scroll-margin-top: 20px;
+        }
+
+        h2 {
+            color: var(--accent);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h3 {
+            margin: 20px 0 10px;
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        p, ul, ol {
+            margin-bottom: 15px;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .code-block {
+            background-color: var(--code-bg);
+            border-radius: 6px;
+            margin: 15px 0;
+            overflow: hidden;
+            border: 1px solid #383a59;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #191a21;
+            padding: 8px 15px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-family: monospace;
+        }
+
+        .copy-btn {
+            background-color: #44475a;
+            color: #fff;
+            border: none;
+            padding: 4px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: var(--accent);
+            color: #000;
+        }
+
+        pre {
+            padding: 15px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Fira Code', 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        code {
+            color: var(--text);
+        }
+
+        .inline-code {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: var(--accent);
+            font-size: 0.9em;
+        }
+
+        /* Colorazione Sintassi CSS */
+        .c-sel { color: var(--pink); font-weight: bold; }
+        .c-prop { color: var(--accent); }
+        .c-val { color: var(--yellow); }
+        .c-comm { color: #6272a4; font-style: italic; }
+        .c-tag { color: #8be9fd; }
+        .c-attr { color: var(--green); }
+        .c-str { color: var(--yellow); }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin: 15px 0;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background-color: #191a21;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .box-model-diagram {
+            background-color: #191a21;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .bm-margin {
+            background-color: rgba(246, 130, 31, 0.25);
+            border: 2px dashed #f6821f;
+            padding: 20px;
+            border-radius: 6px;
+            width: 100%;
+            max-width: 550px;
+            text-align: center;
+            position: relative;
+        }
+
+        .bm-margin::before { content: "MARGIN"; position: absolute; top: 3px; left: 8px; font-size: 0.75rem; color: #f6821f; font-weight: bold; }
+
+        .bm-border {
+            background-color: rgba(255, 216, 102, 0.25);
+            border: 2px solid #ffd866;
+            padding: 20px;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .bm-border::before { content: "BORDER"; position: absolute; top: 3px; left: 8px; font-size: 0.75rem; color: #ffd866; font-weight: bold; }
+
+        .bm-padding {
+            background-color: rgba(166, 226, 46, 0.25);
+            border: 2px dashed #a6e22e;
+            padding: 20px;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .bm-padding::before { content: "PADDING"; position: absolute; top: 3px; left: 8px; font-size: 0.75rem; color: #a6e22e; font-weight: bold; }
+
+        .bm-content {
+            background-color: rgba(102, 217, 239, 0.35);
+            border: 2px solid #66d9ef;
+            padding: 25px 15px;
+            border-radius: 4px;
+            color: #fff;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .bm-content::before { content: "CONTENT"; position: absolute; top: 3px; left: 8px; font-size: 0.75rem; color: #66d9ef; font-weight: bold; }
+
+        .pulse-preview {
+            display: inline-block;
+            background: var(--accent);
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin: 10px 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+        }
+
+        a {
+            color:whitesmoke;
+            text-decoration: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Guida Completa al <span>CSS</span></h1>
+            <p><strong>CSS (Cascading Style Sheets)</strong> è il linguaggio che definisce l'aspetto visivo e la presentazione delle pagine web (colori, layout, font e animazioni).</p>
+        </header>
+
+        <!-- Indice Rapido -->
+        <nav class="quick-nav">
+            <span>Indice:</span>
+            <a href="#sec1">1. Sintassi & Inserimento</a>
+            <a href="#sec2">2. Selettori & Specificità</a>
+            <a href="#sec3">3. Box Model</a>
+            <a href="#sec4">4. Flexbox & Grid</a>
+            <a href="#sec5">5. Responsive Design</a>
+            <a href="#sec6">6. Avanzate</a>
+            <a href="#sec7">7. Metodologie</a>
+        </nav>
+
+        <section id="sec1">
+            <h2>1. Sintassi Base e Inserimento</h2>
+            <p>Un blocco di regole CSS è composto da un <strong>selettore</strong> e da un <strong>blocco di dichiarazioni</strong> racchiuso tra parentesi graffe:</p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span>CSS - Sintassi Base</span>
+                    <button class="copy-btn" onclick="copyCode(this)">Copia</button>
+                </div>
+                <pre><code><span class="c-sel">selettore</span> {
+  <span class="c-prop">proprieta</span>: <span class="c-val">valore</span>;
+  <span class="c-prop">proprieta</span>: <span class="c-val">valore</span>;
+}</code></pre>
+            </div>
+
+            <h3>Come collegare il CSS all'HTML</h3>
+            <ol>
+                <li>
+                    <strong>Esterno (Consigliato):</strong> Tramite un file <span class="inline-code">.css</span> separato, collegato nell'head dell'HTML.
+                    <div class="code-block">
+                        <div class="code-header"><span>HTML - File Esterno</span><button class="copy-btn" onclick="copyCode(this)">Copia</button></div>
+                        <pre><code>&lt;<span class="c-tag">link</span> <span class="c-attr">rel</span>=<span class="c-str">"stylesheet"</span> <span class="c-attr">href</span>=<span class="c-str">"style.css"</span>&gt;</code></pre>
+                    </div>
+                </li>
+                <li>
+                    <strong>Interno:</strong> All'interno del tag <span class="inline-code">&lt;style&gt;</span> nella sezione head dell'HTML.
+                    <div class="code-block">
+                        <div class="code-header"><span>HTML - Stile Interno</span><button class="copy-btn" onclick="copyCode(this)">Copia</button></div>
+                        <pre><code>&lt;<span class="c-tag">style</span>&gt;
+  <span class="c-sel">h1</span> { <span class="c-prop">color</span>: <span class="c-val">blue</span>; }
+&lt;/<span class="c-tag">style</span>&gt;</code></pre>
+                    </div>
+                </li>
+                <li>
+                    <strong>Inline (Sconsigliato):</strong> Direttamente sull'attributo style del singolo elemento HTML.
+                    <div class="code-block">
+                        <div class="code-header"><span>HTML - Stile Inline</span><button class="copy-btn" onclick="copyCode(this)">Copia</button></div>
+                        <pre><code>&lt;<span class="c-tag">h1</span> <span class="c-attr">style</span>=<span class="c-str">"color: blue;"</span>&gt;Titolo&lt;/<span class="c-tag">h1</span>&gt;</code></pre>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <section id="sec2">
+            <h2>2. Selettori e Specificità</h2>
+            <p>I selettori determinano a quali elementi HTML applicare le regole di stile.</p>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Selettore</th>
+                            <th>Sintassi</th>
+                            <th>Esempio CSS</th>
+                            <th>Descrizione</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Elemento / Tag</strong></td>
+                            <td><span class="inline-code">p</span></td>
+                            <td><span class="inline-code">p { color: red; }</span></td>
+                            <td>Seleziona tutti i tag <span class="inline-code">&lt;p&gt;</span>.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Classe</strong></td>
+                            <td><span class="inline-code">.nome-classe</span></td>
+                            <td><span class="inline-code">.btn { background: blue; }</span></td>
+                            <td>Seleziona gli elementi con <span class="inline-code">class="btn"</span>.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ID</strong></td>
+                            <td><span class="inline-code">#nome-id</span></td>
+                            <td><span class="inline-code">#main-header { top: 0; }</span></td>
+                            <td>Seleziona l'elemento unico con <span class="inline-code">id="main-header"</span>.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Universale</strong></td>
+                            <td><span class="inline-code">*</span></td>
+                            <td><span class="inline-code">* { margin: 0; }</span></td>
+                            <td>Seleziona tutti gli elementi del documento.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Attributo</strong></td>
+                            <td><span class="inline-code">[attr]</span></td>
+                            <td><span class="inline-code">input[type="text"]</span></td>
+                            <td>Seleziona in base al valore di un attributo HTML.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Specificità e Cascata</h3>
+            <p>Quando due o più regole in contrasto colpiscono lo stesso elemento, prevale quella con la <strong>specificità più alta</strong> secondo questa gerarchia:</p>
+            <ol>
+                <li>Stile <span class="inline-code">style=""</span> inline <em>(priorità massima)</em></li>
+                <li>Selettori per <strong>#ID</strong></li>
+                <li>Selettori per <strong>.classi</strong>, pseudo-classi e attributi</li>
+                <li>Selettori per <strong>tag</strong> ed elementi base</li>
+            </ol>
+        </section>
+
+        <section id="sec3">
+            <h2>3. Il Box Model (Modello a Scatola)</h2>
+            <p>In CSS, ogni elemento HTML è considerato una scatola rettangolare formata da 4 livelli concentrici:</p>
+            <ul>
+                <li><strong>Content:</strong> Il contenuto reale (testo, immagini, ecc.).</li>
+                <li><strong>Padding:</strong> Spazio trasparente attorno al contenuto (interno al bordo).</li>
+                <li><strong>Border:</strong> Il bordo che circonda il padding.</li>
+                <li><strong>Margin:</strong> Spazio trasparente esterno che separa l'elemento da quelli adiacenti.</li>
+            </ul>
+
+            <!-- Diagramma Visuale del Box Model -->
+            <div class="box-model-diagram">
+                <div class="bm-margin">
+                    <div class="bm-border">
+                        <div class="bm-padding">
+                            <div class="bm-content">
+                                CONTENUTO (Testo / Media)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span>CSS - Box Sizing & Dimensioni</span>
+                    <button class="copy-btn" onclick="copyCode(this)">Copia</button>
+                </div>
+                <pre><code><span class="c-comm">/* Buona norma per gestire correttamente le dimensioni */</span>
+*, *::<span class="c-sel">before</span>, *::<span class="c-sel">after</span> {
+  <span class="c-prop">box-sizing</span>: <span class="c-val">border-box</span>; <span class="c-comm">/* Include padding e bordo nella larghezza totale */</span>
+}
+
+<span class="c-sel">.box</span> {
+  <span class="c-prop">width</span>: <span class="c-val">300px</span>;
+  <span class="c-prop">padding</span>: <span class="c-val">20px</span>;
+  <span class="c-prop">border</span>: <span class="c-val">2px solid black</span>;
+  <span class="c-prop">margin</span>: <span class="c-val">15px</span>;
+}</code></pre>
+            </div>
+        </section>
+
+        <section id="sec4">
+            <h2>4. Layout Moderno: Flexbox e Grid</h2>
+
+            <h3>Flexbox (Unidimensionale)</h3>
+            <p>Ideale per allineare elementi lungo un singolo asse (righe o colonne), come barre di navigazione e schede.</p>
+            <div class="code-block">
+                <div class="code-header"><span>CSS - Layout Flexbox</span><button class="copy-btn" onclick="copyCode(this)">Copia</button></div>
+                <pre><code><span class="c-sel">.flex-container</span> {
+  <span class="c-prop">display</span>: <span class="c-val">flex</span>;
+  <span class="c-prop">justify-content</span>: <span class="c-val">space-between</span>; <span class="c-comm">/* Allineamento asse principale */</span>
+  <span class="c-prop">align-items</span>: <span class="c-val">center</span>;            <span class="c-comm">/* Allineamento asse trasversale */</span>
+  <span class="c-prop">gap</span>: <span class="c-val">1rem</span>;                      <span class="c-comm">/* Spazio tra gli elementi */</span>
+}</code></pre>
+            </div>
+
+            <h3>CSS Grid (Bidimensionale)</h3>
+            <p>Ideale per la struttura complessiva della pagina, gestendo contemporaneamente righe e colonne.</p>
+            <div class="code-block">
+                <div class="code-header"><span>CSS - Layout Grid</span><button class="copy-btn" onclick="copyCode(this)">Copia</button></div>
+                <pre><code><span class="c-sel">.grid-container</span> {
+  <span class="c-prop">display</span>: <span class="c-val">grid</span>;
+  <span class="c-prop">grid-template-columns</span>: <span class="c-val">repeat(auto-fit, minmax(250px, 1fr))</span>; <span class="c-comm">/* Griglia responsive automatica */</span>
+  <span class="c-prop">gap</span>: <span class="c-val">20px</span>;
+}</code></pre>
+            </div>
+        </section>
+
+        <section id="sec5">
+            <h2>5. Responsive Design e Media Queries</h2>
+            <p>Consente di adattare l'interfaccia a diversi dispositivi (Mobile, Tablet, Desktop) seguendo la filosofia <em>Mobile-First</em>.</p>
+            <div class="code-block">
+                <div class="code-header"><span>CSS - Media Queries</span><button class="copy-btn" onclick="copyCode(this)">Copia</button></div>
+                <pre><code><span class="c-comm">/* Stili base per Mobile (Approach Mobile-First) */</span>
+<span class="c-sel">body</span> {
+  <span class="c-prop">font-size</span>: <span class="c-val">14px</span>;
+}
+
+<span class="c-comm">/* Breakpoint per Tablet e Desktop */</span>
+<span class="c-sel">@media</span> (<span class="c-prop">min-width</span>: <span class="c-val">768px</span>) {
+  <span class="c-sel">body</span> {
+    <span class="c-prop">font-size</span>: <span class="c-val">16px</span>;
+  }
+  
+  <span class="c-sel">.container</span> {
+    <span class="c-prop">display</span>: <span class="c-val">flex</span>;
+  }
+}</code></pre>
+            </div>
+        </section>
+
+        <section id="sec6">
+            <h2>6. Funzionalità Avanzate</h2>
+
+            <h3>Variabili CSS (Custom Properties)</h3>
+            <p>Permettono di memorizzare valori da riutilizzare in tutto il foglio di stile.</p>
+            <div class="code-block">
+                <div class="code-header"><span>CSS - Custom Properties</span><button class="copy-btn" onclick="copyCode(this)">Copia</button></div>
+                <pre><code><span class="c-sel">:root</span> {
+  <span class="c-prop">--primary-color</span>: <span class="c-val">#3498db</span>;
+  <span class="c-prop">--main-padding</span>: <span class="c-val">16px</span>;
+}
+
+<span class="c-sel">.button</span> {
+  <span class="c-prop">background-color</span>: <span class="c-val">var(--primary-color)</span>;
+  <span class="c-prop">padding</span>: <span class="c-val">var(--main-padding)</span>;
+}</code></pre>
+            </div>
+
+            <h3>Transizioni e Animazioni</h3>
+            <p>Anteprima interattiva dell'effetto pulse:</p>
+            <div class="pulse-preview">Effetto Animato</div>
+
+            <div class="code-block">
+                <div class="code-header"><span>CSS - Transitions & Keyframes</span><button class="copy-btn" onclick="copyCode(this)">Copia</button></div>
+                <pre><code><span class="c-comm">/* Transizione fluida su un bottone */</span>
+<span class="c-sel">.btn</span> {
+  <span class="c-prop">background-color</span>: <span class="c-val">blue</span>;
+  <span class="c-prop">transition</span>: <span class="c-val">background-color 0.3s ease, transform 0.2s ease</span>;
+}
+
+<span class="c-sel">.btn:hover</span> {
+  <span class="c-prop">background-color</span>: <span class="c-val">darkblue</span>;
+  <span class="c-prop">transform</span>: <span class="c-val">translateY(-2px)</span>;
+}
+
+<span class="c-comm">/* Animazione personalizzata Keyframes */</span>
+<span class="c-sel">@keyframes pulse</span> {
+  <span class="c-val">0%</span>   { <span class="c-prop">transform</span>: <span class="c-val">scale(1)</span>; }
+  <span class="c-val">50%</span>  { <span class="c-prop">transform</span>: <span class="c-val">scale(1.05)</span>; }
+  <span class="c-val">100%</span> { <span class="c-prop">transform</span>: <span class="c-val">scale(1)</span>; }
+}
+
+<span class="c-sel">.card</span> {
+  <span class="c-prop">animation</span>: <span class="c-val">pulse 2s infinite</span>;
+}</code></pre>
+            </div>
+        </section>
+
+        <section id="sec7">
+            <h2>7. Metodologia e Moduli Aggiuntivi</h2>
+            <ul>
+                <li><strong>BEM (Block Element Modifier):</strong> Convenzione di nomenclatura per mantenere il codice CSS ordinato e scalabile (es. <span class="inline-code">.card</span>, <span class="inline-code">.card__title</span>, <span class="inline-code">.card--featured</span>).</li>
+                <li><strong>Preprocessori (Sass / SCSS):</strong> Estendono il CSS standard introducendo nesting, mixin, variabili avanzate e funzioni matematiche.</li>
+                <li><strong>Framework Utility-First (Tailwind CSS):</strong> Permettono di formattare velocemente il layout applicando classi atomiche e predefinite direttamente nell'HTML.</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>Guida Completa al CSS • Alessio Donadello</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyCode(button) {
+            const pre = button.parentElement.nextElementSibling;
+            const text = pre.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerText;
+                button.innerText = 'Copiato!';
+                button.style.backgroundColor = '#50fa7b';
+                button.style.color = '#000';
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.style.backgroundColor = '#44475a';
+                    button.style.color = '#fff';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

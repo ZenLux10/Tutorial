@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guida Completa a JavaScript (JS)</title>
+  <style>
+    :root {
+      --bg-dark: #1e1e2e;
+      --card-bg: #282a36;
+      --header-bg: #21222c;
+      --accent: #f1fa8c;
+      --text: #f8f8f2;
+      --text-muted: #6272a4;
+      --code-keyword: #ff79c6;
+      --code-function: #50fa7b;
+      --code-string: #f1fa8c;
+      --code-comment: #6272a4;
+      --code-number: #bd93f9;
+      --border-radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid var(--header-bg);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .intro-text {
+      color: #d8dee9;
+      font-size: 1.05rem;
+    }
+
+    .toc {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+
+    .toc h3 {
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+
+    .toc ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+    }
+
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .toc a:hover {
+      color: var(--accent);
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: #ff79c6;
+      margin-bottom: 15px;
+      border-left: 4px solid #ff79c6;
+      padding-left: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    ul, ol {
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+
+    li {
+      margin-bottom: 5px;
+    }
+
+    .code-block {
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      margin: 15px 0 25px 0;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .code-header {
+      background-color: var(--header-bg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 15px;
+    }
+
+    .language {
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+    }
+
+    .copy-button {
+      background-color: #44475a;
+      color: var(--text);
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      padding: 4px 10px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 0.8rem;
+      transition: all 0.2s ease;
+    }
+
+    .copy-button:hover {
+      background-color: var(--accent);
+      color: var(--bg-dark);
+    }
+
+    pre {
+      padding: 15px;
+      overflow-x: auto;
+      font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    code {
+      font-family: inherit;
+    }
+
+    .demo-box {
+      background-color: var(--header-bg);
+      border: 1px dashed var(--accent);
+      border-radius: var(--border-radius);
+      padding: 20px;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .demo-btn {
+      background-color: var(--accent);
+      color: var(--bg-dark);
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: transform 0.1s;
+    }
+
+    .demo-btn:active {
+      transform: scale(0.98);
+    }
+
+    footer {
+      color:whitesmoke;
+      text-decoration: none;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Guida Completa a JavaScript</h1>
+      <p class="intro-text">
+        JavaScript (JS) è il linguaggio di programmazione fondamentale del Web. Insieme a HTML (struttura) e CSS (stile), gestisce la logica e l'interattività di un sito web, oltre a poter essere eseguito sul server tramite Node.js.
+      </p>
+    </header>
+
+    <div class="toc">
+      <h3>Indice dei Contenuti</h3>
+      <ul>
+        <li><a href="#sec1">1. Integrazione</a></li>
+        <li><a href="#sec2">2. Variabili e Tipi di Dato</a></li>
+        <li><a href="#sec3">3. Operatori e Condizioni</a></li>
+        <li><a href="#sec4">4. Funzioni</a></li>
+        <li><a href="#sec5">5. Oggetti e Array</a></li>
+        <li><a href="#sec6">6. Manipolazione del DOM</a></li>
+        <li><a href="#sec7">7. JS Asincrono (Fetch)</a></li>
+        <li><a href="#sec8">8. ES6+ Features</a></li>
+        <li><a href="#sec9">9. Mappa di Apprendimento</a></li>
+      </ul>
+    </div>
+
+    <section id="sec1">
+      <h2>1. Cos'è JavaScript e come integrarlo</h2>
+      <p>JavaScript viene eseguito dal motore JS del browser (es. V8 su Chrome, SpiderMonkey su Firefox).</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="language">HTML</span>
+          <button class="copy-button" onclick="copyCode(this)">Copia</button>
+        </div>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="it"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Corso JavaScript&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Messaggio JS&lt;/h1&gt;
+
+  &lt;!-- Script esterno (Consigliato) --&gt;
+  &lt;script src="script.js" defer&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+    </section>
+
+    <section id="sec2">
+      <h2>2. Variabili e Tipi di Dato</h2>
+      <p><strong>Dichiarazione delle variabili:</strong></p>
+      <ul>
+        <li><code>const</code>: Dichiarazione di costante (valore non riassegnabile). Usa questa di default.</li>
+        <li><code>let</code>: Dichiarazione di variabile con scope di blocco (riassegnabile).</li>
+        <li><code>var</code>: Obsoleto. Evita di usarlo a causa dello scope di funzione e dell'hoisting imprevedibile.</li>
+      </ul>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="language">JavaScript</span>
+          <button class="copy-button" onclick="copyCode(this)">Copia</button>
+        </div>
+        <pre><code>const nome = "Mario"; // Stringa
+let eta = 25;         // Numero
+const isDeveloper = true; // Boolean</code></pre>
+      </div>
+
+      <p><strong>Tipi di Dato Principali:</strong></p>
+      <ol>
+        <li><strong>Primitivi:</strong> String, Number, Boolean, Undefined, Null, Symbol, BigInt</li>
+        <li><strong>Oggetti/Riferimenti:</strong> Object, Array, Function</li>
+      </ol>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="language">JavaScript</span>
+          <button class="copy-button" onclick="copyCode(this)">Copia</button>
+        </div>
+        <pre><code>let datiIncompleti; // undefined
+const vuoto = null; // null</code></pre>
+      </div>
+    </section>
+
+    <section id="sec3">
+      <h2>3. Operatori e Strutture di Controllo</h2>
+      <p><strong>Comparazione Rigorosa vs Debole:</strong> Usa sempre <code>===</code> e <code>!==</code> per evitare la conversione automatica del tipo (type coercion).</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="language">JavaScript</span>
+          <button class="copy-button" onclick="copyCode(this)">Copia</button>
+        </div>
+        <pre><code>5 == "5";  // true (converte il tipo)
+5 === "5"; // false (stretto: confronta tipo e valore)</code></pre>
+      </div>
+
+      <p><strong>Condizioni (if, else, switch):</strong></p>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="language">JavaScript</span>
+          <button class="copy-button" onclick="copyCode(this)">Copia</button>
+        </div>
+        <pre><code>const ora = 14;
+if (ora &lt; 12) {
+  console.log("Buongiorno!");
+} else if (ora &lt; 18) {
+  console.log("Buon pomeriggio!");
+} else {
+  console.log("Buonasera!");
+}</code></pre>
+      </div>
+
+      <p><strong>Cicli (for, while, for...of):</strong></p>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="language">JavaScript</span>
+          <button class="copy-button" onclick="copyCode(this)">Copia</button>
+        </div>
+        <pre><code>// Ciclo classico
+for (let i = 0; i &lt; 5; i++) {
+  console.log(`Indice: ${i}`);
+}
+
+// Ciclo for...of (per array e iterabili)
+const frutti = ["Mela", "Banana", "Pera"];
+for (const frutto of frutti) {
+  console.log(frutto);
+}</code></pre>
+      </div>
+    </section>
+
+    <section id="sec4">
+      <h2>4. Funzioni</h2>
+      <p>Le funzioni racchiudono blocchi di codice riutilizzabili.</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="language">JavaScript</span>
+          <button class="copy-button" onclick="copyCode(this)">Copia</button>
+        </div>
+        <pre><code>// Declarative Function
+function somma(a, b) {
+  return a + b;
+}
+
+// Arrow Function (ES6) - Più sintetica
+const moltiplica = (a, b) =&gt; a * b;</code></pre>
+      </div>
+    </section>
+
+    <section id="sec5">
+      <h2>5. Oggetti e Array</h2>
+      <p><strong>Oggetti (Coppie Chiave-Valore):</strong></p>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="language">JavaScript</span>
+          <button class="copy-button" onclick="copyCode(this)">Copia</button>
+        </div>
+        <pre><code>const utente = {
+  nome: "Luigi",
+  livello: 10,
+  saluta() {
+    console.log(`Ciao, sono ${this.nome}`);
+  }
+};
+
+console.log(utente.nome); // "Luigi"
+utente.saluta();</code></pre>
+      </div>
+
+      <p><strong>Array e Metodi Principali:</strong></p>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="language">JavaScript</span>
+          <button class="copy-button" onclick="copyCode(this)">Copia</button>
+        </div>
+        <pre><code>const numeri = [1, 2, 3, 4, 5];
+
+// map: trasforma ogni elemento creando un nuovo array
+const doppi = numeri.map(n =&gt; n * 2); // [2, 4, 6, 8, 10]
+
+// filter: seleziona solo gli elementi che soddisfano la condizione
+const pari = numeri.filter(n =&gt; n % 2 === 0); // [2, 4]
+
+// reduce: accumula gli elementi in un unico valore
+const sommaTotale = numeri.reduce((acc, curr) =&gt; acc + curr, 0); // 15</code></pre>
+      </div>
+    </section>
+
+    <section id="sec6">
+      <h2>6. Manipolazione del DOM (Document Object Model)</h2>
+      <p>Il DOM permette a JS di interagire e modificare l'HTML in tempo reale.</p>
+
+      <div class="demo-box">
+        <p id="testo">Testo originale</p>
+        <button id="btn" class="demo-btn">Cliccami</button>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="language">HTML & JavaScript</span>
+          <button class="copy-button" onclick="copyCode(this)">Copia</button>
+        </div>
+        <pre><code>&lt;!-- HTML --&gt;
+&lt;button id="btn"&gt;Cliccami&lt;/button&gt;
+&lt;p id="testo"&gt;Testo originale&lt;/p&gt;
+
+&lt;!-- JavaScript --&gt;
+// Selezionare gli elementi
+const bottone = document.querySelector("#btn");
+const testo = document.querySelector("#testo");
+
+// Aggiungere un Event Listener
+bottone.addEventListener("click", () =&gt; {
+  testo.textContent = "Il testo è stato modificato!";
+  testo.style.color = "#ff79c6";
+});</code></pre>
+      </div>
+    </section>
+
+    <section id="sec7">
+      <h2>7. JavaScript Asincrono (Promises e Async/Await)</h2>
+      <p>I compiti asincroni (es. recuperare dati da un server) non bloccano l'esecuzione del programma.</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="language">JavaScript</span>
+          <button class="copy-button" onclick="copyCode(this)">Copia</button>
+        </div>
+        <pre><code>async function ottieniDati() {
+  try {
+    const risposta = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+    if (!risposta.ok) {
+      throw new Error(`Errore HTTP: ${risposta.status}`);
+    }
+    const dati = await risposta.json();
+    console.log("Dati ricevuti:", dati);
+  } catch (errore) {
+    console.error("Si è verificato un errore:", errore);
+  }
+}
+
+ottieniDati();</code></pre>
+      </div>
+    </section>
+
+    <section id="sec8">
+      <h2>8. ES6+ Features Essenziali</h2>
+      <p><strong>Destrutturazione (Destructuring):</strong></p>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="language">JavaScript</span>
+          <button class="copy-button" onclick="copyCode(this)">Copia</button>
+        </div>
+        <pre><code>const persona = { nome: "Anna", eta: 30 };
+const { nome, eta } = persona; // Estrae variabili direttamente da oggetti
+
+const numeri = [10, 20];
+const [primo, secondo] = numeri;</code></pre>
+      </div>
+
+      <p><strong>Spread Operator (...):</strong></p>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="language">JavaScript</span>
+          <button class="copy-button" onclick="copyCode(this)">Copia</button>
+        </div>
+        <pre><code>const arr1 = [1, 2];
+const arr2 = [...arr1, 3, 4]; // [1, 2, 3, 4]
+
+const obj1 = { a: 1 };
+const obj2 = { ...obj1, b: 2 }; // { a: 1, b: 2 }</code></pre>
+      </div>
+
+      <p><strong>Template Literals:</strong></p>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="language">JavaScript</span>
+          <button class="copy-button" onclick="copyCode(this)">Copia</button>
+        </div>
+        <pre><code>const prodotto = "Tastiera";
+const prezzo = 50;
+console.log(`Il costo di ${prodotto} è pari a ${prezzo}€.`);</code></pre>
+      </div>
+    </section>
+
+    <section id="sec9">
+      <h2>9. Mappa di Apprendimento Consigliata</h2>
+      <ol>
+        <li><strong>Basi:</strong> Sintassi, Tipi di dato, Condizionali, Cicli.</li>
+        <li><strong>DOM & Eventi:</strong> Interazione con la pagina web.</li>
+        <li><strong>JS Moderno (ES6+):</strong> Arrow functions, Destructuring, Array Methods (map, filter).</li>
+        <li><strong>Asincronia:</strong> Promises, Fetch API, async/await.</li>
+        <li><strong>Ecosistema Avanzato:</strong> Framework/Librerie (React, Vue) e Server-side JS (Node.js/Express, TypeScript).</li>
+      </ol>
+    </section>
+  </div>
+
+        <footer>
+            <p>Guida Completa all'HTML • Alessio Donadello</p>
+        </footer>
+
+  <script>
+    function copyCode(button) {
+      const codeBlock = button.parentElement.nextElementSibling.querySelector('code');
+      const textToCopy = codeBlock.innerText;
+
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const originalText = button.textContent;
+        button.textContent = 'Copiato!';
+        button.style.backgroundColor = '#50fa7b';
+        button.style.color = '#282a36';
+
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.style.backgroundColor = '#44475a';
+          button.style.color = '#f8f8f2';
+        }, 2000);
+      });
+    }
+
+    const bottone = document.querySelector("#btn");
+    const testo = document.querySelector("#testo");
+
+    if (bottone && testo) {
+      bottone.addEventListener("click", () => {
+        testo.textContent = "Il testo è stato modificato con JS!";
+        testo.style.color = "#f1fa8c";
+      });
+    }
+  </script>
+</body>
+</html>

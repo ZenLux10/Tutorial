@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guida Completa alle Basi di HTML</title>
+    <style>
+        :root {
+            --bg-color: #121214;
+            --card-bg: #1e1e24;
+            --code-bg: #282a36;
+            --accent: #007acc;
+            --text: #e1e1e6;
+            --text-muted: #a9a9b3;
+            --border: #323238;
+            --kw-color: #ff79c6;
+            --str-color: #f1fa8c;
+            --tag-color: #8be9fd;
+            --attr-color: #50fa7b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        header h1 {
+            color: #fff;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            color: var(--accent);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        h3 {
+            margin: 15px 0 10px;
+            color: #fff;
+        }
+
+        p, ul, ol {
+            margin-bottom: 15px;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Blocco di Codice */
+        .code-block {
+            background-color: var(--code-bg);
+            border-radius: 6px;
+            margin: 15px 0;
+            overflow: hidden;
+            border: 1px solid #383a59;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #191a21;
+            padding: 8px 15px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .copy-btn {
+            background-color: #44475a;
+            color: #fff;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: background 0.2s;
+        }
+
+        .copy-btn:hover {
+            background-color: var(--accent);
+        }
+
+        pre {
+            padding: 15px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+        }
+
+        code {
+            color: var(--text);
+        }
+
+        .inline-code {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: var(--tag-color);
+        }
+
+        /* Colorazione Sintassi */
+        .t-tag { color: var(--tag-color); }
+        .t-attr { color: var(--attr-color); }
+        .t-str { color: var(--str-color); }
+        .t-comm { color: #6272a4; font-style: italic; }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+        }
+
+        a {
+            color:whitesmoke;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Guida HTML5 per Principianti</h1>
+            <p>Appunti e riferimenti rapidi trasformati in documento web interattivo</p>
+        </header>
+
+        <!-- Sezione 1: VSC e Struttura -->
+        <section>
+            <h2>1. Struttura Base & Visual Studio Code</h2>
+            <p>In Visual Studio Code (VSC) puoi generare rapidamente lo scheletro di una pagina HTML digitando <span class="inline-code">html:5</span> e premendo <kbd>TAB</kbd> (il tasto a sinistra della lettera "Q").</p>
+            
+            <h3>Risultato del comando:</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span>HTML5 Template</span>
+                    <button class="copy-btn" onclick="copyCode(this)">Copia</button>
+                </div>
+                <pre><code>&lt;<span class="t-tag">!DOCTYPE</span> <span class="t-attr">html</span>&gt;
+&lt;<span class="t-tag">html</span> <span class="t-attr">lang</span>=<span class="t-str">"it"</span>&gt;
+&lt;<span class="t-tag">head</span>&gt;
+    &lt;<span class="t-tag">meta</span> <span class="t-attr">charset</span>=<span class="t-str">"UTF-8"</span>&gt;
+    &lt;<span class="t-tag">meta</span> <span class="t-attr">name</span>=<span class="t-str">"viewport"</span> <span class="t-attr">content</span>=<span class="t-str">"width=device-width, initial-scale=1.0"</span>&gt;
+    &lt;<span class="t-tag">title</span>&gt;Document&lt;/<span class="t-tag">title</span>&gt;
+&lt;/<span class="t-tag">head</span>&gt;
+&lt;<span class="t-tag">body</span>&gt;
+    
+&lt;/<span class="t-tag">body</span>&gt;
+&lt;/<span class="t-tag">html</span>&gt;</code></pre>
+            </div>
+
+            <h3>Cose da modificare prima di iniziare:</h3>
+            <ol>
+                <li><strong>Lingua del documento:</strong> Cambia <span class="inline-code">&lt;html lang="en"&gt;</span> in <span class="inline-code">&lt;html lang="it"&gt;</span> per evitare la richiesta di traduzione automatica del browser.</li>
+                <li><strong>Titolo della scheda:</strong> Personalizza <span class="inline-code">&lt;title&gt;Document&lt;/title&gt;</span> sostituendo "Document" con il titolo pertinente al tuo progetto.</li>
+                <li><strong>Collegamento CSS e JS:</strong> Per collegare un foglio di stile esterno o script:
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Integrazione File Esterni</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copia</button>
+                        </div>
+                        <pre><code><span class="t-comm">&lt;!-- Nel &lt;head&gt; per il CSS --&gt;</span>
+&lt;<span class="t-tag">link</span> <span class="t-attr">rel</span>=<span class="t-str">"stylesheet"</span> <span class="t-attr">href</span>=<span class="t-str">"assets/css/style.css"</span>&gt;
+
+<span class="t-comm">&lt;!-- In fondo al &lt;body&gt; per il JavaScript --&gt;</span>
+&lt;<span class="t-tag">script</span> <span class="t-attr">src</span>=<span class="t-str">"assets/js/main.js"</span>&gt;&lt;/<span class="t-tag">script</span>&gt;</code></pre>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <!-- Sezione 2: Elementi Principali -->
+        <section>
+            <h2>2. Elementi Principali per la Gestione dei Contenuti</h2>
+            
+            <h3>Intestazioni (Titoli)</h3>
+            <p>Vanno da <span class="inline-code">&lt;h1&gt;</span> (più importante) ad <span class="inline-code">&lt;h6&gt;</span> (meno importante). Richiedono tag di apertura e chiusura.</p>
+            <div class="code-block">
+                <div class="code-header"><span>Esempio Titolo</span><button class="copy-btn" onclick="copyCode(this)">Copia</button></div>
+                <pre><code>&lt;<span class="t-tag">h1</span>&gt;Titolo Grande&lt;/<span class="t-tag">h1</span>&gt;</code></pre>
+            </div>
+
+            <h3>Testo e Contenitori</h3>
+            <ul>
+                <li><span class="inline-code">&lt;p&gt;</span>: Definisce un paragrafo di testo.</li>
+                <li><span class="inline-code">&lt;span&gt;</span>: Contenitore di tipo <em>inline</em> (utilizzato per stilizzare parti limitate di testo).</li>
+                <li><span class="inline-code">&lt;div&gt;</span>: Contenitore di tipo <em>block</em> per raggruppare vari elementi.</li>
+            </ul>
+
+            <h3>Anatomia di un Paragrafo e Attributi</h3>
+            <div class="code-block">
+                <div class="code-header"><span>Anatomia Tag</span><button class="copy-btn" onclick="copyCode(this)">Copia</button></div>
+                <pre><code><span class="t-comm">&lt;!-- Paragrafo semplice --&gt;</span>
+&lt;<span class="t-tag">p</span>&gt;Questo Paragrafo&lt;/<span class="t-tag">p</span>&gt;
+
+<span class="t-comm">&lt;!-- Link con attributi --&gt;</span>
+&lt;<span class="t-tag">a</span> <span class="t-attr">href</span>=<span class="t-str">"https://google.com"</span> <span class="t-attr">target</span>=<span class="t-str">"_blank"</span>&gt;Visita Google&lt;/<span class="t-tag">a</span>&gt;</code></pre>
+            </div>
+
+            <h3>Tag Autochiudenti (Self-Closing)</h3>
+            <ul>
+                <li><span class="inline-code">&lt;img&gt;</span>: Inserisce un'immagine tramite l'attributo <span class="inline-code">src</span>.</li>
+                <li><span class="inline-code">&lt;br&gt;</span>: Crea un'interruzione di riga all'interno del testo.</li>
+                <li><span class="inline-code">&lt;hr&gt;</span>: Inserisce una linea divisoria orizzontale.</li>
+                <li><span class="inline-code">&lt;input&gt;</span>: Crea campi di input interattivi.
+                    <div class="code-block">
+                        <div class="code-header"><span>Tipi di Input</span><button class="copy-btn" onclick="copyCode(this)">Copia</button></div>
+                        <pre><code>&lt;<span class="t-tag">input</span> <span class="t-attr">type</span>=<span class="t-str">"text"</span> <span class="t-attr">placeholder</span>=<span class="t-str">"Testo semplice"</span>&gt;
+&lt;<span class="t-tag">input</span> <span class="t-attr">type</span>=<span class="t-str">"password"</span>&gt;
+&lt;<span class="t-tag">input</span> <span class="t-attr">type</span>=<span class="t-str">"checkbox"</span>&gt;
+&lt;<span class="t-tag">input</span> <span class="t-attr">type</span>=<span class="t-str">"submit"</span> <span class="t-attr">value</span>=<span class="t-str">"Invia"</span>&gt;</code></pre>
+                    </div>
+                </li>
+            </ul>
+
+            <h3>Formattazione Testo</h3>
+            <p>Usa <span class="inline-code">&lt;strong&gt;</span> per il grassetto e <span class="inline-code">&lt;em&gt;</span> per il corsivo.</p>
+            <div class="code-block">
+                <div class="code-header"><span>Formattazione</span><button class="copy-btn" onclick="copyCode(this)">Copia</button></div>
+                <pre><code>&lt;<span class="t-tag">strong</span>&gt;Buonasera Gamer!&lt;/<span class="t-tag">strong</span>&gt;
+&lt;<span class="t-tag">em</span>&gt;Testo in corsivo&lt;/<span class="t-tag">em</span>&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- Sezione 3: Elenchi -->
+        <section>
+            <h2>3. Elenchi</h2>
+            <h3>Elenco NON Ordinato (Punti puntati)</h3>
+            <div class="code-block">
+                <div class="code-header"><span>Lista non ordinata</span><button class="copy-btn" onclick="copyCode(this)">Copia</button></div>
+                <pre><code>&lt;<span class="t-tag">ul</span>&gt;
+    &lt;<span class="t-tag">li</span>&gt;Primo elemento&lt;/<span class="t-tag">li</span>&gt;
+    &lt;<span class="t-tag">li</span>&gt;Secondo elemento&lt;/<span class="t-tag">li</span>&gt;
+&lt;/<span class="t-tag">ul</span>&gt;</code></pre>
+            </div>
+
+            <h3>Elenco Ordinato (Numerato)</h3>
+            <div class="code-block">
+                <div class="code-header"><span>Lista ordinata</span><button class="copy-btn" onclick="copyCode(this)">Copia</button></div>
+                <pre><code>&lt;<span class="t-tag">ol</span>&gt;
+    &lt;<span class="t-tag">li</span>&gt;Fase 1&lt;/<span class="t-tag">li</span>&gt;
+    &lt;<span class="t-tag">li</span>&gt;Fase 2&lt;/<span class="t-tag">li</span>&gt;
+&lt;/<span class="t-tag">ol</span>&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- Sezione 4: HTML Semantico -->
+        <section>
+            <h2>4. HTML Semantico</h2>
+            <p>Migliora la struttura della pagina, l'accessibilità e la SEO rendendo chiaro il significato di ciascuna area:</p>
+            <ul>
+                <li><span class="inline-code">&lt;header&gt;</span>: Intestazione della pagina o sezione (logo, menu nav).</li>
+                <li><span class="inline-code">&lt;nav&gt;</span>: Contenitore riservato ai link di navigazione.</li>
+                <li><span class="inline-code">&lt;main&gt;</span>: Contenuto principale e unico della pagina.</li>
+                <li><span class="inline-code">&lt;section&gt;</span>: Sezione generica del documento.</li>
+                <li><span class="inline-code">&lt;article&gt;</span>: Contenuto autonomo e riutilizzabile (es. post, articoli).</li>
+                <li><span class="inline-code">&lt;aside&gt;</span>: Barra laterale o contenuti secondari correlati.</li>
+                <li><span class="inline-code">&lt;footer&gt;</span>: Piè di pagina (copyright, note legali, contatti).</li>
+            </ul>
+        </section>
+
+        <!-- Sezione 5: Form e Tabelle -->
+        <section>
+            <h2>5. Moduli e Tabelle</h2>
+            
+            <h3>Moduli (Form)</h3>
+            <div class="code-block">
+                <div class="code-header"><span>Esempio Form</span><button class="copy-btn" onclick="copyCode(this)">Copia</button></div>
+                <pre><code>&lt;<span class="t-tag">form</span> <span class="t-attr">action</span>=<span class="t-str">"/invia-dati"</span> <span class="t-attr">method</span>=<span class="t-str">"POST"</span>&gt;
+    &lt;<span class="t-tag">label</span> <span class="t-attr">for</span>=<span class="t-str">"nome"</span>&gt;Nome:&lt;/<span class="t-tag">label</span>&gt;
+    &lt;<span class="t-tag">input</span> <span class="t-attr">type</span>=<span class="t-str">"text"</span> <span class="t-attr">id</span>=<span class="t-str">"nome"</span> <span class="t-attr">name</span>=<span class="t-str">"nome"</span> <span class="t-attr">placeholder</span>=<span class="t-str">"Inserisci il tuo nome"</span>&gt;
+
+    &lt;<span class="t-tag">label</span> <span class="t-attr">for</span>=<span class="t-str">"email"</span>&gt;Email:&lt;/<span class="t-tag">label</span>&gt;
+    &lt;<span class="t-tag">input</span> <span class="t-attr">type</span>=<span class="t-str">"email"</span> <span class="t-attr">id</span>=<span class="t-str">"email"</span> <span class="t-attr">name</span>=<span class="t-str">"email"</span> <span class="t-attr">required</span>&gt;
+
+    &lt;<span class="t-tag">button</span> <span class="t-attr">type</span>=<span class="t-str">"submit"</span>&gt;Invia&lt;/<span class="t-tag">button</span>&gt;
+&lt;/<span class="t-tag">form</span>&gt;</code></pre>
+            </div>
+
+            <h3>Tabelle</h3>
+            <div class="code-block">
+                <div class="code-header"><span>Esempio Tabella</span><button class="copy-btn" onclick="copyCode(this)">Copia</button></div>
+                <pre><code>&lt;<span class="t-tag">table</span>&gt;
+    &lt;<span class="t-tag">thead</span>&gt;
+        &lt;<span class="t-tag">tr</span>&gt;
+            &lt;<span class="t-tag">th</span>&gt;Nome&lt;/<span class="t-tag">th</span>&gt;
+            &lt;<span class="t-tag">th</span>&gt;Ruolo&lt;/<span class="t-tag">th</span>&gt;
+        &lt;/<span class="t-tag">tr</span>&gt;
+    &lt;/<span class="t-tag">thead</span>&gt;
+    &lt;<span class="t-tag">tbody</span>&gt;
+        &lt;<span class="t-tag">tr</span>&gt;
+            &lt;<span class="t-tag">td</span>&gt;Mario&lt;/<span class="t-tag">td</span>&gt;
+            &lt;<span class="t-tag">td</span>&gt;Developer&lt;/<span class="t-tag">td</span>&gt;
+        &lt;/<span class="t-tag">tr</span>&gt;
+    &lt;/<span class="t-tag">tbody</span>&gt;
+&lt;/<span class="t-tag">table</span>&gt;</code></pre>
+            </div>
+        </section>
+
+        <footer>
+            <p>Guida Completa all'HTML • Alessio Donadello</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyCode(button) {
+            const pre = button.parentElement.nextElementSibling;
+            const text = pre.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerText;
+                button.innerText = 'Copiato!';
+                button.style.backgroundColor = '#50fa7b';
+                button.style.color = '#000';
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.style.backgroundColor = '#44475a';
+                    button.style.color = '#fff';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
